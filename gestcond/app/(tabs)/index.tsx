@@ -17,13 +17,13 @@ export default function InitialScreen() {
         */}
 
         <Text style={styles.title}>GestCondo</Text>
-        <Text style={styles.subtitle}>O seu condomínio na palma da mão</Text>
+        <Text style={styles.subtitle}>O seu condomínio na palma da mã</Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => router.replace('/auth/Login')}>
+        <TouchableOpacity style={styles.button} onPress={() => router.replace('./auth/Login')}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => router.replace('/auth/Register')}>
+        <TouchableOpacity style={styles.button} onPress={() => router.replace('./auth/Register')}>
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
       </View>

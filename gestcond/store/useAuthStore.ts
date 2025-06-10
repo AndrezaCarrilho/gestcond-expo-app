@@ -1,3 +1,4 @@
+// store/useAuthStore.ts
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,10 +20,10 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({ 
-      isAuthenticated: false,
-      user: null,
-      token: null,
+    (set) => ({
+      isAuthenticated: false as boolean, // Explicitamente tipado como boolean
+      user: null as User | null,       // Explicitamente tipado
+      token: null as string | null,    // Explicitamente tipado
       setAuth: (token, userData) => set({ isAuthenticated: true, user: userData, token }),
       clearAuth: () => set({ isAuthenticated: false, user: null, token: null }),
     }),
