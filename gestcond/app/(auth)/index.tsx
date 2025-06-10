@@ -10,13 +10,12 @@ export default function InitialScreen() {
     <View style={styles.solidBackground}>
       {/* Imagem de fundo (se quisesse por) */}
       {/* <Image source={require('../../assets/condo_background_blurred.jpg')} style={styles.backgroundImage} /> */}
-      <View style={styles.overlay} /> 
 
       <View style={styles.container}>
         {/* --- Topo (Ícone e GestCondo) --- */}
         <View style={styles.topContainer}>
           <View style={styles.iconCircle}>
-            <Ionicons name="business-outline" size={80} color="#20B2AA" /> {/* Ícone de prédio maior */}
+            <Ionicons name="business-outline" size={100} color="#20B2AA" /> {/* Ícone de prédio maior */}
           </View>
           <Text style={styles.gestCondoTitle}>GestCondo</Text>
         </View>
@@ -45,7 +44,7 @@ export default function InitialScreen() {
 const styles = StyleSheet.create({
   solidBackground: {
     flex: 1,
-    backgroundColor: '#001f3f', // Azul bem escuro para o fundo (igual ao Login)
+    backgroundColor: '#003366', // Azul bem escuro para o fundo (igual ao Login)
   },
   backgroundImage: { // Se quiser usar imagem de fundo (comentado)
     position: 'absolute', // Permite que o overlay fique por cima
@@ -54,10 +53,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     resizeMode: 'cover',
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.5)', // Escurece o fundo ou a imagem
   },
   container: {
     flex: 1,
@@ -72,9 +67,9 @@ const styles = StyleSheet.create({
   },
   iconCircle: {
     backgroundColor: '#fff',
-    borderRadius: 70, // Círculo maior
-    width: 140,
-    height: 140,
+    borderRadius: 80, // Círculo maior
+    width: 150,
+    height: 150,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
@@ -105,7 +100,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    backgroundColor: '#007bff', // Cor azul primária (botão Login)
+    backgroundColor: '#20B2AA', // Cor azul primária (botão Login)
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -119,7 +114,7 @@ const styles = StyleSheet.create({
   registerButton: { // Estilo para o link "Não tem cadastro?"
     width: '100%',
     backgroundColor: 'transparent',
-    padding: 15,
+    padding: 1,
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 5, // Espaço após o botão Login

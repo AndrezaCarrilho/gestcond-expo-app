@@ -36,7 +36,6 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.solidBackground}>
-      <View style={styles.overlay} /> 
 
       <View style={styles.container}>
         <View style={styles.topContainer}>
@@ -92,11 +91,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   solidBackground: {
     flex: 1,
-    backgroundColor: '#001f3f',
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: '#003366',
   },
   container: {
     flex: 1,
@@ -120,7 +115,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   loginBox: {
-    width: '90%',
+    width: '98%',
     maxWidth: 400,
     backgroundColor: '#fff',
     borderRadius: 20,
@@ -151,7 +146,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    backgroundColor: '#28a745',
+    backgroundColor: '#20B2AA',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',

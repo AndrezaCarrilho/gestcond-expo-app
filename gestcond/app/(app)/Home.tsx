@@ -33,7 +33,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
-        <Ionicons name="log-out-outline" size={28} color="#007bff" />
+        <Ionicons name="log-out-outline" size={28} color="#20B2AA" />
         <Text style={styles.logoutButtonText}>Sair</Text>
       </TouchableOpacity>
 
@@ -47,7 +47,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
           style={styles.gridItem} 
           onPress={() => router.push('./CadastrarEncomendas')} 
         >
-          <Ionicons name="cube-outline" size={40} color="#007bff" />
+          <Ionicons name="cube-outline" size={40} color="#20B2AA" />
           <Text style={styles.gridItemText}>Encomendas</Text>
         </TouchableOpacity>
 
@@ -56,7 +56,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
           style={styles.gridItem} 
           onPress={() => router.push('./ReservarEspaco')} 
         >
-          <Ionicons name="calendar-outline" size={40} color="#007bff" /> 
+          <Ionicons name="calendar-outline" size={40} color="#20B2AA" /> 
           <Text style={styles.gridItemText}>Reservar Espaço</Text>
         </TouchableOpacity>
 
@@ -65,7 +65,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
           style={styles.gridItem} 
           onPress={() => router.push('./CadastrarVisitas')} 
         >
-          <Ionicons name="person-outline" size={40} color="#007bff" /> 
+          <Ionicons name="person-outline" size={40} color="#20B2AA" /> 
           <Text style={styles.gridItemText}>Cad. Visitas</Text>
         </TouchableOpacity>
 
@@ -74,7 +74,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
           style={styles.gridItem} 
           onPress={() => router.push('./CadastrarVeiculo')} 
         >
-          <Ionicons name="car-outline" size={40} color="#007bff" />
+          <Ionicons name="car-outline" size={40} color="#20B2AA" />
           <Text style={styles.gridItemText}>Cad. Veículo</Text>
         </TouchableOpacity>
 
@@ -83,7 +83,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
           style={styles.gridItem} 
           onPress={() => router.push('./CadastrarMorador')} 
         >
-          <Ionicons name="person-add-outline" size={40} color="#007bff" />
+          <Ionicons name="person-add-outline" size={40} color="#20B2AA" />
           <Text style={styles.gridItemText}>Cad. Morador</Text>
         </TouchableOpacity>
 
@@ -92,7 +92,7 @@ export default function HomeScreen() { // Renomeado para HomeScreen se for Home.
           style={styles.gridItem} 
           onPress={() => router.push('.//Sobre')} 
         >
-          <Ionicons name="people-outline" size={40} color="#007bff" />
+          <Ionicons name="people-outline" size={40} color="#20B2AA" />
           <Text style={styles.gridItemText}>Sobre</Text>
         </TouchableOpacity>
       </View>
@@ -128,19 +128,19 @@ const styles = StyleSheet.create({
   },
   logoutButton: {
     position: 'absolute',
-    top: 40,
+    top: 20,
     right: 20,
     zIndex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#dcdcdc',
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,
   },
   logoutButtonText: {
     marginLeft: 5,
-    color: '#007bff',
+    color: '#20B2AA',
     fontWeight: 'bold',
   },
   greeting: {
@@ -164,10 +164,10 @@ const styles = StyleSheet.create({
   gridItem: {
     width: '45%',
     backgroundColor: '#fff',
-    padding: 20,
+    padding: 30,
     borderRadius: 10,
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
