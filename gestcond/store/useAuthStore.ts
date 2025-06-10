@@ -19,7 +19,7 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({ // Tipo para 'set' é inferido por create<AuthState>()
+    (set) => ({ 
       isAuthenticated: false,
       user: null,
       token: null,

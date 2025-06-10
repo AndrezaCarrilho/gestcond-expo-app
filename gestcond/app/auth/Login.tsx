@@ -1,4 +1,4 @@
-// app/auth/Login.tsx
+
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ImageBackground, Alert } from 'react-native';
 import { router } from 'expo-router'; // Importar o router do Expo Router
@@ -33,11 +33,9 @@ export default function LoginScreen() {
       // Simulação de delay
       await new Promise(resolve => setTimeout(resolve, 1000)); 
 
-      // *** CORREÇÃO AQUI: Caminho para a dashboard ***
-      // Se sua estrutura é `app/app/(app)/index.tsx`, a rota para a dashboard é `/app/(app)`
-      router.replace('./app/app/Dashboard'); 
-      // OU se a tela principal do grupo (app) se chama 'Dashboard.tsx', a rota é '/app/(app)/Dashboard'
-      // router.replace('/app/(app)/Dashboard');
+      
+      router.replace('./app/(app)/Dashboard'); 
+ 
 
     } catch (err: any) {
       console.error('Erro no login:', err.response?.data || err.message);
@@ -52,7 +50,6 @@ export default function LoginScreen() {
       <View style={styles.overlay} /> 
 
       <View style={styles.container}>
-        {/* Logo e fundo comentados */}
         <Text style={styles.title}>Login</Text>
 
         <TextInput style={styles.input} placeholder="E-mail" placeholderTextColor="#ccc" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
@@ -72,7 +69,6 @@ export default function LoginScreen() {
           <Text style={styles.registerText}>Não tem cadastro? Crie uma conta</Text>
         </TouchableOpacity>
 
-        {/* Botão de voltar */}
       </View>
     </View>
   );

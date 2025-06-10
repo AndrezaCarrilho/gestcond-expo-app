@@ -50,7 +50,7 @@ export default function RegisterScreen() {
   };
 
   return (
-    // Fundo azul escuro sólido (ImageBackground e logo comentados)
+    
     <View style={styles.solidBackground}>
       <View style={styles.overlay} />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -131,11 +131,11 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   solidBackground: {
     flex: 1,
-    backgroundColor: '#1a202c', // Azul escuro
+    backgroundColor: '#1a202c',
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.3)', // Leve opacidade
+    backgroundColor: 'rgba(0,0,0,0.3)', 
   },
   scrollContainer: {
     flexGrow: 1,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '90%',
-    backgroundColor: 'rgba(255,255,255,0.1)', // Um pouco transparente para ver o fundo
+    backgroundColor: 'rgba(255,255,255,0.1)', 
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
