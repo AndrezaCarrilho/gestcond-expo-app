@@ -135,18 +135,18 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   solidBackground: {
     flex: 1,
-    backgroundColor: '#001f3f', // Azul bem escuro (igual ao Login)
+    backgroundColor: '#003366', 
   },
   scrollContainer: {
-    flexGrow: 1, // *** ESSENCIAL: Permite que o conteúdo da ScrollView cresça ***
-    justifyContent: 'center', // *** MUDANÇA AQUI: Centraliza o conteúdo verticalmente ***
-    alignItems: 'center', // Centraliza o conteúdo horizontalmente
-    paddingVertical: 40, // Padding para cima e para baixo
+    flexGrow: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    paddingVertical: 40, 
     paddingHorizontal: 20,
   },
   topContainer: {
     alignItems: 'center',
-    marginBottom: 20, // Espaço entre o topo e a caixa de cadastro
+    marginBottom: 20, 
   },
   iconCircle: {
     backgroundColor: '#fff',

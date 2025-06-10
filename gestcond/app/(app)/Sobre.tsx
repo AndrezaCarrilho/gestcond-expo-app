@@ -1,8 +1,8 @@
 // app/(app)/Sobre.tsx
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { router } from 'expo-router'; // Importar o router do Expo Router
-import { Ionicons } from '@expo/vector-icons'; // Para o ícone de voltar
+import { router } from 'expo-router'; 
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function SobreScreen() {
   const teamMembers = [
@@ -35,9 +35,9 @@ export default function SobreScreen() {
       'Controle de Versão: Git, GitHub',
       'Ambiente de Desenvolvimento: GitHub Codespaces'
     ],
-    backendInfo: 'Backend desenvolvido em Spring Boot (ou Node.js) com integração a Banco de Dados.',
-    databaseInfo: 'Banco de Dados hospedado na nuvem (e.g., PostgreSQL, MongoDB).',
-    deploymentInfo: 'Servidor publicado na nuvem (e.g., Vercel, Heroku).'
+    backendInfo: 'Backend desenvolvido em Spring Boot com integração a Banco de Dados.',
+    databaseInfo: 'Banco de Dados hospedado na nuvem.',
+    deploymentInfo: 'Servidor publicado na nuvem.'
   };
 
   return (

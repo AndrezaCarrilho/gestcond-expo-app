@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ImageBackground, Alert } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons'; // Para o ícone de prédio
-//import api from '../../services/api'; // *** CAMINHO CORRIGIDO: 2 NÍVEIS ACIMA (para a raiz do projeto) ***
-import { useAuthStore } from '../../store/useAuthStore'; // *** CAMINHO CORRIGIDO: 2 NÍVEIS ACIMA (para a raiz do projeto) ***
+//import api from '../../services/api'; // Mantenha este caminho ou ajuste
+import { useAuthStore } from '../../store/useAuthStore'; // Mantenha este caminho ou ajuste
 
 export default function LoginScreen() {
-  const [cpf, setCpf] = useState(''); // Alterado para CPF
+  const [cpf, setCpf] = useState(''); // Campo para CPF
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -15,28 +15,36 @@ export default function LoginScreen() {
   const setAuth = useAuthStore((state) => state.setAuth);
 
   const handleLogin = async () => {
-    setError('');
-    setLoading(true);
+    setError(''); // Limpa mensagens de erro anteriores
 
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000)); 
+    // --- VALIDAÇÃO LOCAL DAS CREDENCIAIS ESPECÍFICAS ---
+    if (cpf === '1234567899' && password === '123123') {
+      setLoading(true);
+      try {
+        // Simulação de delay
+        await new Promise(resolve => setTimeout(resolve, 1000)); 
 
-      setAuth('dummy-token-para-teste', { id: '1', name: 'Usuário Teste', email: 'teste@example.com' }); 
-      
-      // *** CAMINHO CORRETO E SIMPLIFICADO: Para a tela Home.tsx ***
-      router.replace('/(app)/Home'); // Caminho ABSOLUTO para app/(app)/Home.tsx
+        // Define o usuário como autenticado (com dados fictícios para a simulação)
+        setAuth('valid-token-simulado-123', { id: '1', name: 'Usuário GestCondo', email: 'user@gestcondo.com' }); 
+        
+        // Redireciona para a tela Home (Dashboard)
+        router.replace('/(app)/Home'); // Caminho ABSOLUTO para app/(app)/Home.tsx
 
-    } catch (err: any) {
-      console.error('Erro no login:', err.response?.data || err.message);
-      setError(err.response?.data?.message || 'Credenciais inválidas. Tente novamente.');
-    } finally {
-      setLoading(false);
+      } catch (err: any) {
+        // Isso não deve acontecer com a validação local, mas é bom ter
+        console.error('Erro inesperado no login simulado:', err.message);
+        setError('Ocorreu um erro inesperado.');
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      // Credenciais inválidas, exibe mensagem de erro
+      setError('CPF ou Senha inválidos. Tente: 1234567899 / 123123');
     }
   };
 
   return (
     <View style={styles.solidBackground}>
-
       <View style={styles.container}>
         <View style={styles.topContainer}>
           <View style={styles.iconCircle}>
@@ -54,7 +62,7 @@ export default function LoginScreen() {
             placeholderTextColor="#888"
             value={cpf}
             onChangeText={setCpf}
-            keyboardType="numeric"
+            keyboardType="numeric" // Mantém teclado numérico para CPF
           />
           <TextInput
             style={styles.input}
@@ -91,7 +99,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   solidBackground: {
     flex: 1,
-    backgroundColor: '#003366',
+    backgroundColor: '#003366', // Fundo azul escuro
   },
   container: {
     flex: 1,
@@ -146,7 +154,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    backgroundColor: '#20B2AA',
+    backgroundColor: '#20B2AA', // Verde mar
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
