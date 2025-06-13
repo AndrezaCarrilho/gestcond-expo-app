@@ -4,13 +4,13 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface User {
-  id: number; // <<< CORRIGIDO: id deve ser number para ownerId no backend >>>
+  id: number; 
   name: string;
   email: string;
   cpf: string; 
-  apartment?: string; // Mantido opcional se não for sempre retornado
-  block?: string;     // <<< ADICIONADO: 'block' como opcional >>>
-  role?: string;      // Mantido opcional se não for sempre retornado
+  apartment?: string; 
+  block?: string;     
+  role?: string;    
 }
 
 interface AuthState {

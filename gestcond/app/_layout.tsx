@@ -1,10 +1,10 @@
 // app/_layout.tsx
-import { Stack } from 'expo-router'; // Removido Redirect, useAuthStore, ActivityIndicator, View, StyleSheet, useEffect, useState
+import { Stack } from 'expo-router'; 
 
 export default function AppLayout() {
-  // Este layout NÃO FAZ VERIFICAÇÃO DE AUTENTICAÇÃO INICIAL.
+  
   // A tela 'app/index.tsx' será carregada por padrão.
-  // A lógica de autenticação será tratada a partir do Login.
+  
   return (
     <Stack screenOptions={{ headerShown: false }}>
       {/* A tela app/index.tsx será a primeira a carregar aqui */}

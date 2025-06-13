@@ -2,14 +2,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { router } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons'; // Para o ícone de prédio
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function InitialScreen() {
   return (
-    // Fundo azul escuro sólido (ImageBackground e logo comentados)
+
     <View style={styles.solidBackground}>
-      {/* Imagem de fundo (se quisesse por) */}
-      {/* <Image source={require('../../assets/condo_background_blurred.jpg')} style={styles.backgroundImage} /> */}
+     
 
       <View style={styles.container}>
         {/* --- Topo (Ícone e GestCondo) --- */}
@@ -24,14 +23,14 @@ export default function InitialScreen() {
         <View style={styles.buttonBox}>
           <TouchableOpacity 
             style={styles.button} 
-            onPress={() => router.replace('/(auth)/Login')} // Caminho correto para Login.tsx
+            onPress={() => router.replace('/(auth)/Login')} 
           >
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
-            style={styles.registerButton} // Estilo diferente para "Não tem cadastro?"
-            onPress={() => router.replace('/(auth)/Register')} // Caminho correto para Register.tsx
+            style={styles.registerButton} 
+            onPress={() => router.replace('/(auth)/Register')} 
           >
             <Text style={styles.registerButtonText}>Não tem cadastro? Crie uma conta</Text>
           </TouchableOpacity>
@@ -44,10 +43,10 @@ export default function InitialScreen() {
 const styles = StyleSheet.create({
   solidBackground: {
     flex: 1,
-    backgroundColor: '#003366', // Azul bem escuro para o fundo (igual ao Login)
+    backgroundColor: '#003366', 
   },
-  backgroundImage: { // Se quiser usar imagem de fundo (comentado)
-    position: 'absolute', // Permite que o overlay fique por cima
+  backgroundImage: { 
+    position: 'absolute', 
     top: 0,
     left: 0,
     bottom: 0,
@@ -56,9 +55,9 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'space-between', // Espaço entre topo e fundo
+    justifyContent: 'space-between', 
     alignItems: 'center',
-    paddingVertical: 80, // Padding vertical para afastar do topo e base da tela
+    paddingVertical: 80, 
     paddingHorizontal: 20,
   },
   // --- Estilos para o Topo (Ícone e GestCondo) ---
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
   },
   iconCircle: {
     backgroundColor: '#fff',
-    borderRadius: 80, // Círculo maior
+    borderRadius: 80, 
     width: 150,
     height: 150,
     justifyContent: 'center',
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   gestCondoTitle: {
-    fontSize: 48, // Título maior
+    fontSize: 48, 
     fontWeight: 'bold',
     color: '#fff',
   },
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
   buttonBox: {
     width: '90%',
     maxWidth: 400,
-    backgroundColor: 'rgba(255,255,255,0.9)', // Fundo semi-transparente para o box de botões
+    backgroundColor: 'rgba(255,255,255,0.9)', 
     borderRadius: 20,
     padding: 30,
     alignItems: 'center',
@@ -100,27 +99,27 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    backgroundColor: '#20B2AA', // Cor azul primária (botão Login)
+    backgroundColor: '#20B2AA', 
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
-    marginBottom: 15, // Espaço entre os botões
+    marginBottom: 15,
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  registerButton: { // Estilo para o link "Não tem cadastro?"
+  registerButton: { 
     width: '100%',
     backgroundColor: 'transparent',
     padding: 1,
     borderRadius: 10,
     alignItems: 'center',
-    marginTop: 5, // Espaço após o botão Login
+    marginTop: 5, 
   },
   registerButtonText: {
-    color: '#007bff', // Cor azul para o texto do link
+    color: '#007bff', 
     fontSize: 14,
     textDecorationLine: 'underline',
   },

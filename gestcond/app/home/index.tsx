@@ -1,10 +1,10 @@
 // app/(app)/home/index.tsx
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, FlatList, Switch } from 'react-native'; // Adicionado Switch
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, FlatList, Switch } from 'react-native'; 
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { useAuthStore } from '../../store/useAuthStore'; // Mantenha este caminho
-import { useSafeAreaInsets } from 'react-native-safe-area-context'; // Importar hook para insets de segurança
+import { useAuthStore } from '../../store/useAuthStore'; 
+import { useSafeAreaInsets } from 'react-native-safe-area-context'; 
 
 interface Delivery { 
   id: string;
@@ -21,10 +21,10 @@ const DUMMY_DELIVERIES: Delivery[] = [
 export default function HomeScreen() { 
   const user = useAuthStore((state) => state.user);
   const clearAuth = useAuthStore((state) => state.clearAuth); 
-  const isDarkMode = useAuthStore((state) => state.isDarkMode); // <<< NOVO: Pega o estado do tema
-  const toggleDarkMode = useAuthStore((state) => state.toggleDarkMode); // <<< NOVO: Pega a função para alternar o tema
+  const isDarkMode = useAuthStore((state) => state.isDarkMode); 
+  const toggleDarkMode = useAuthStore((state) => state.toggleDarkMode); 
 
-  const insets = useSafeAreaInsets(); // Hook para pegar os insets da área segura
+  const insets = useSafeAreaInsets(); 
 
   const [deliveries, setDeliveries] = useState<Delivery[]>(DUMMY_DELIVERIES);
   const [loadingDeliveries, setLoadingDeliveries] = useState(false);
@@ -32,7 +32,7 @@ export default function HomeScreen() {
 
   const handleLogout = () => {
     clearAuth(); 
-    router.replace('/(auth)/Login'); // Caminho para Login (Absoluto do root 'app/')
+    router.replace('/(auth)/Login'); 
   };
 
   useEffect(() => {
@@ -178,16 +178,15 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  // Estilos da ScrollView e seu conteúdo
+  
   scrollViewContent: { 
     flexGrow: 1, 
     justifyContent: 'flex-start',
-    alignItems: 'stretch', // Estica horizontalmente o conteúdo
-    // backgroundColor: '#f8f8f8', // Cor de fundo removida para ser dinâmica
-    paddingHorizontal: 20, // Mantido padding horizontal aqui
+    alignItems: 'stretch', 
+    paddingHorizontal: 20, 
   },
   contentWrapper: { 
-    // paddingTop e paddingHorizontal serão definidos dinamicamente no scrollViewContent
+    
   },
   // Estilos do Botão de Logout
   logoutButton: {
@@ -201,26 +200,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10, 
     borderRadius: 5,
   },
-  // Estilos do Botão de Modo Noturno
+  
   darkModeToggle: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end', // Alinha à direita
+    justifyContent: 'flex-end', 
     width: '100%',
     marginBottom: 20,
-    paddingTop: 10, // Adicionado padding para afastar do topo da tela e do botão de logout
+    paddingTop: 10, 
   },
   darkModeText: {
     marginRight: 10,
     fontSize: 16,
     fontWeight: 'bold',
   },
-  // Estilos do Título e Seções (Cores serão dinâmicas)
+  
   greeting: {
     fontSize: 26,
     fontWeight: 'bold',
     marginBottom: 20,
-    marginTop: 10, // Aumentado espaço superior para o greeting
+    marginTop: 10, 
   },
   sectionTitle: {
     fontSize: 20,
@@ -228,7 +227,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20, 
   },
-  // Estilos da Grade de Navegação (Cores serão dinâmicas)
+ 
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -236,7 +235,7 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     width: '46%',
-    padding: 20, // Diminui um pouco o padding para deixar a box mais compacta
+    padding: 20, 
     borderRadius: 10,
     alignItems: 'center',
     marginBottom: 15,
@@ -248,11 +247,11 @@ const styles = StyleSheet.create({
   },
   gridItemText: {
     marginTop: 8, 
-    fontSize: 15, // Diminui a fonte
+    fontSize: 15, 
     fontWeight: '500',
     textAlign: 'center',
   },
-  // Estilos da Lista de Entregas Recentes (Cores serão dinâmicas)
+  
   deliveryList: {
     width: '100%', 
     padding: 15, 
@@ -279,7 +278,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
   },
-  // Estilos Compartilhados para Mensagens de Erro/Nenhum Dado
+  
   errorText: {
     color: 'red',
     textAlign: 'center',
