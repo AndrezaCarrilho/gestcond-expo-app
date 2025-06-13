@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ImageBackground, Alert } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons'; // Para o ícone de prédio
-//import api from '../../services/api'; // Mantenha este caminho ou ajuste
+import api from '../../services/api'; // Mantenha este caminho ou ajuste
 import { useAuthStore } from '../../store/useAuthStore'; // Mantenha este caminho ou ajuste
 
 export default function LoginScreen() {
-  const [cpf, setCpf] = useState(''); // Campo para CPF
+  const [username, setUsername] = useState(''); // <<< ALTERADO: Campo para 'username' >>>
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -17,21 +17,35 @@ export default function LoginScreen() {
   const handleLogin = async () => {
     setError(''); // Limpa mensagens de erro anteriores
 
-    // --- VALIDAÇÃO LOCAL DAS CREDENCIAIS ESPECÍFICAS ---
-    if (cpf === '1234567899' && password === '123123') {
+    // --- CREDENCIAIS DE TESTE ---
+    const TEST_USERNAME = 'admin'; // <<< NOVO USUÁRIO DE TESTE >>>
+    const TEST_PASSWORD = 'admin123'; // <<< NOVA SENHA DE TESTE >>>
+    // --- FIM CREDENCIAIS DE TESTE ---
+
+    if (username === TEST_USERNAME && password === TEST_PASSWORD) {
       setLoading(true);
       try {
         // Simulação de delay
         await new Promise(resolve => setTimeout(resolve, 1000)); 
 
         // Define o usuário como autenticado (com dados fictícios para a simulação)
-        setAuth('valid-token-simulado-123', { id: '1', name: 'Usuário GestCondo', email: 'user@gestcondo.com' }); 
+        // Usando o ID 1, como sugerido, e o username 'admin'
+        setAuth('valid-token-simulado-admin', { 
+          id: 1, // ID do usuário pré-cadastrado no backend
+          username: TEST_USERNAME, // Nome de usuário
+          name: 'Administrador Principal', // Nome completo (se o backend retornar)
+          email: 'admin@gestcondo.com', // Email (se o backend retornar)
+          // Adicione outros dados se forem importantes para o seu app
+          // cpf: '12345678900', 
+          // apartment: '999', 
+          // block: 'ADMIN',
+          // role: 'admin' 
+        }); 
         
         // Redireciona para a tela Home (Dashboard)
-        router.replace('/(app)/Home'); // Caminho ABSOLUTO para app/(app)/Home.tsx
+        router.replace('/home'); 
 
       } catch (err: any) {
-        // Isso não deve acontecer com a validação local, mas é bom ter
         console.error('Erro inesperado no login simulado:', err.message);
         setError('Ocorreu um erro inesperado.');
       } finally {
@@ -39,7 +53,7 @@ export default function LoginScreen() {
       }
     } else {
       // Credenciais inválidas, exibe mensagem de erro
-      setError('CPF ou Senha inválidos. Tente: 1234567899 / 123123');
+      setError(`Usuário ou Senha inválidos. Tente: ${TEST_USERNAME} / ${TEST_PASSWORD}`);
     }
   };
 
@@ -58,11 +72,12 @@ export default function LoginScreen() {
 
           <TextInput
             style={styles.input}
-            placeholder="CPF"
+            placeholder="Usuário" // <<< NOVO: Placeholder para 'Usuário' >>>
             placeholderTextColor="#888"
-            value={cpf}
-            onChangeText={setCpf}
-            keyboardType="numeric" // Mantém teclado numérico para CPF
+            value={username} // <<< USANDO 'username' >>>
+            onChangeText={setUsername}
+            keyboardType="default" // <<< MUDADO: Para permitir letras e números >>>
+            autoCapitalize="none" // Para não capitalizar automaticamente
           />
           <TextInput
             style={styles.input}
@@ -82,8 +97,10 @@ export default function LoginScreen() {
             )}
           </TouchableOpacity>
           
-          <TouchableOpacity onPress={() => {/* Lógica para "Esqueceu a senha?" */}}>
-            <Text style={styles.forgotPasswordText}>Esqueceu a senha? (Clique aqui)</Text>
+          <TouchableOpacity 
+            onPress={() => router.push('/(auth)/EsqueceuSenha')}
+          >
+            <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
           </TouchableOpacity>
         </View>
         
@@ -98,96 +115,20 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   solidBackground: {
-    flex: 1,
-    backgroundColor: '#003366', // Fundo azul escuro
+    flex: 1, backgroundColor: '#003366',
   },
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    padding: 20,
-  },
-  topContainer: {
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  iconCircle: {
-    backgroundColor: '#fff',
-    borderRadius: 50,
-    padding: 10,
-    marginBottom: 10,
-  },
-  gestCondoTitle: {
-    fontSize: 38,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  loginBox: {
-    width: '98%',
-    maxWidth: 400,
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 30,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    elevation: 8,
-  },
-  loginTitle: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 30,
-  },
-  input: {
-    width: '100%',
-    backgroundColor: '#f0f0f0',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 20,
-    fontSize: 16,
-    color: '#333',
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
-  },
-  button: {
-    width: '100%',
-    backgroundColor: '#20B2AA', // Verde mar
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  forgotPasswordText: {
-    color: '#007bff',
-    marginTop: 20,
-    fontSize: 15,
-    textDecorationLine: 'underline',
-  },
-  registerLinkContainer: {
-    marginTop: 30,
-  },
-  registerText: {
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  registerLink: {
-    color: '#007bff',
-    fontWeight: 'bold',
-    textDecorationLine: 'underline',
-  },
-  errorText: {
-    color: '#ffdddd',
-    marginBottom: 10,
-    textAlign: 'center',
-    fontSize: 14,
-  },
+  container: { flex: 1, justifyContent: 'space-around', alignItems: 'center', padding: 20, },
+  topContainer: { alignItems: 'center', marginBottom: 20, },
+  iconCircle: { backgroundColor: '#fff', borderRadius: 50, padding: 10, marginBottom: 10, },
+  gestCondoTitle: { fontSize: 38, fontWeight: 'bold', color: '#fff', },
+  loginBox: { width: '98%', maxWidth: 400, backgroundColor: '#fff', borderRadius: 20, padding: 30, alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.25, shadowRadius: 10, elevation: 8, },
+  loginTitle: { fontSize: 32, fontWeight: 'bold', color: '#333', marginBottom: 30, },
+  input: { width: '100%', backgroundColor: '#f0f0f0', padding: 15, borderRadius: 10, marginBottom: 20, fontSize: 16, color: '#333', borderWidth: 1, borderColor: '#e0e0e0', },
+  button: { width: '100%', backgroundColor: '#20B2AA', padding: 15, borderRadius: 10, alignItems: 'center', marginTop: 10, },
+  buttonText: { color: '#fff', fontSize: 18, fontWeight: 'bold', },
+  forgotPasswordText: { color: '#007bff', marginTop: 20, fontSize: 15, textDecorationLine: 'underline', },
+  registerLinkContainer: { marginTop: 30, },
+  registerText: { color: '#fff', fontSize: 16, textAlign: 'center', },
+  registerLink: { color: '#007bff', fontWeight: 'bold', textDecorationLine: 'underline', },
+  errorText: { color: '#ffdddd', marginBottom: 10, textAlign: 'center', fontSize: 14, },
 });

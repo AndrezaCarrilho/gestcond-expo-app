@@ -17,7 +17,7 @@ export default function InitialScreen() {
           <View style={styles.iconCircle}>
             <Ionicons name="business-outline" size={100} color="#20B2AA" /> {/* Ícone de prédio maior */}
           </View>
-          <Text style={styles.gestCondoTitle}>GestCondo</Text>
+          <Text style={styles.gestCondoTitle}>GestCond</Text>
         </View>
 
         {/* --- Box Central para Botões (Login e Cadastrar) --- */}
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   registerButtonText: {
     color: '#007bff', // Cor azul para o texto do link
-    fontSize: 16,
+    fontSize: 14,
     textDecorationLine: 'underline',
   },
 });

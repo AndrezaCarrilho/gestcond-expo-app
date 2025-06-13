@@ -157,8 +157,8 @@ const styles = StyleSheet.create({
    backButtonIconOnly: {
     marginTop: 15,
     padding: 10,
-    borderRadius: 50, // Faz o fundo ser um círculo se quiser
-    backgroundColor: '#f0f0f0', // Opcional: para ter um fundo no ícone
+    borderRadius: 50, 
+    backgroundColor: '#f0f0f0', 
   },
   reserveSpaceTitle: { 
     fontSize: 32,

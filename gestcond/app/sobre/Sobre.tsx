@@ -64,7 +64,7 @@ export default function SobreScreen() {
         <View style={styles.teamGrid}>
           {teamMembers.map((member, index) => (
             <View key={index} style={styles.memberCard}>
-              <Ionicons name="person-circle-outline" size={50} color="#007bff" />
+              <Ionicons name="person-circle-outline" size={50} color="#20B2AA" />
               <Text style={styles.memberName}>{member.name}</Text>
               <Text style={styles.memberRole}>{member.role}</Text>
             </View>
@@ -76,7 +76,7 @@ export default function SobreScreen() {
           style={styles.backButton} 
           onPress={() => router.back()} // Volta para a tela anterior (Dashboard/Home)
         >
-          <Ionicons name="arrow-back-outline" size={24} color="#007bff" />
+          <Ionicons name="arrow-back-outline" size={24} color="#20B2AA" />
           <Text style={styles.backButtonText}>Voltar para a Home</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#333',
+    marginTop: 50,
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
   },
   backButtonText: {
     marginLeft: 5,
-    color: '#007bff',
+    color: '#20B2AA',
     fontSize: 16,
     fontWeight: 'bold',
   },
