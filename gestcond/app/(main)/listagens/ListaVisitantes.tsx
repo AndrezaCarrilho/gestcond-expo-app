@@ -55,7 +55,7 @@ export default function VisitasListScreen() {
   const API_USERNAME = process.env.EXPO_PUBLIC_API_USERNAME || 'username';
   const API_PASSWORD = process.env.EXPO_PUBLIC_API_PASSWORD || 'password';
 
-   // Validação das variáveis de ambiente
+   // Validação das variáveis de ambiente para o app funcionar corretamente
   useEffect(() => {
     if (!process.env.EXPO_PUBLIC_API_BASE_URL) {
       console.warn('EXPO_PUBLIC_API_BASE_URL não está definida, usando valor padrão');
