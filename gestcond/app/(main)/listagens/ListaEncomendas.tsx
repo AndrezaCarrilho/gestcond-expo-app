@@ -1,8 +1,9 @@
+// app/(main)/listagens/Encomendas.tsx
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, FlatList, ScrollView } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-
+// import api from '../../../../services/api'; 
 
 interface Encomenda {
   id: string;
@@ -31,7 +32,8 @@ export default function EncomendasListScreen() {
   const itemsPerPage = 5;
 
   useEffect(() => {
-   
+    // Parte de conexão com Backend - COMENTADA
+  }, []);
 
   const filteredEncomendas = encomendas.filter((encomenda: Encomenda) => 
     encomenda.descricao.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -55,7 +57,7 @@ export default function EncomendasListScreen() {
   return (
     <View style={styles.solidBackground}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-    
+        {/* --- Topo (Ícone e GestCondo) --- */}
         <View style={styles.topContainer}>
           <View style={styles.iconCircle}>
             <Ionicons name="cube-outline" size={40} color="#20B2AA" />
@@ -63,11 +65,11 @@ export default function EncomendasListScreen() {
           <Text style={styles.gestCondoTitle}>GestCondo</Text>
         </View>
 
-    
+        {/* --- Box Central Branca (Lista de Encomendas) --- */}
         <View style={styles.listContainerBox}> {/* Este é o container da lista */}
           <Text style={styles.listTitle}>Lista de Encomendas</Text>
           
-         
+          {/* Barra de Pesquisa com Ícone */}
           <View style={styles.searchInputContainer}>
             <Ionicons name="search-outline" size={20} color="#20B2AA" style={styles.searchIcon} />
             <TextInput
@@ -97,7 +99,7 @@ export default function EncomendasListScreen() {
             />
           )}
 
-        
+          {/* Controles de Paginação */}
           {totalPages > 1 && (
             <View style={styles.paginationControls}>
               <TouchableOpacity
@@ -105,7 +107,7 @@ export default function EncomendasListScreen() {
                 onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
               >
-                <Ionicons name="chevron-back-outline" size={20} color="#fff" />
+                <Ionicons name="chevron-back-outline" size={20} color="#fff" /> {/* Ícone Anterior */}
               </TouchableOpacity>
               <Text style={styles.paginationInfo}>Página {currentPage} de {totalPages}</Text>
               <TouchableOpacity
@@ -118,7 +120,7 @@ export default function EncomendasListScreen() {
             </View>
           )}
 
-         
+          {/* Botão para Cadastrar Nova Encomenda */}
           <TouchableOpacity 
             style={styles.addButton} 
             onPress={() => router.push('../cadastros/CadastrarEncomendas')}
@@ -127,7 +129,7 @@ export default function EncomendasListScreen() {
             <Text style={styles.addButtonText}>Nova Encomenda</Text>
           </TouchableOpacity>
           
-        
+          {/* Botão de Voltar (APENAS ÍCONE - Bolinha) */}
           <TouchableOpacity onPress={() => router.back()} style={styles.backButtonIconOnly}>
             <Ionicons name="arrow-back-outline" size={30} color="#20B2AA" />
           </TouchableOpacity>
